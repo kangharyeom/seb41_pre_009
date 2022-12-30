@@ -20,12 +20,13 @@ import javax.validation.constraints.Positive;
 import java.net.URI;
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/members")
 @Validated
 @Slf4j
 public class MemberController {
-    private final static String MEMBER_DEFAULT_URL = "members";
+    private final static String MEMBER_DEFAULT_URL = "/members";
     private final MemberService memberService;
     private final MemberMapper mapper;
 
@@ -71,6 +72,7 @@ public class MemberController {
     @GetMapping
     public ResponseEntity getMembers(@Positive @RequestParam int page,
                                      @Positive @RequestParam int size) {
+
         Page<Member> pageMembers = memberService.findMembers(page - 1, size);
         List<Member> members = pageMembers.getContent();
         return new ResponseEntity<>(
