@@ -52,7 +52,6 @@ public class MemberService {
         Member savedMember = memberRepository.save(member);
 
         //publisher.publishEvent(new MemberRegistrationApplicationEvent(this, savedMember));
-
         return savedMember;
         //return memberRepository.save(member);
     }

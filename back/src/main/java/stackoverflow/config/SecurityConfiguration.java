@@ -106,7 +106,7 @@ public class SecurityConfiguration {
         //configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT", "DELETE", "HEAD"));
         //configuration.setAllowedHeaders(Arrays.asList("*"));
         //configuration.setExposedHeaders(Arrays.asList("*"));
-
+        
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
