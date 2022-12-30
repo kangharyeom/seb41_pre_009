@@ -22,7 +22,6 @@ public class QuestionVoteController {
         return questionVoteService.saveQuestionVote(questionId, questionVoterId,1);
     }
 
-
     @PostMapping("/{question-id}/downvote")
     @ResponseStatus(HttpStatus.CREATED)
     public VoteDto.QuestionResponse postQuestionDownVote(@PathVariable("question-id") long questionId,

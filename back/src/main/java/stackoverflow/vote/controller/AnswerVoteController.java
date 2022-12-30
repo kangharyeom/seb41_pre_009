@@ -14,14 +14,12 @@ public class AnswerVoteController {
         this.answerVoteService = answerVoteService;
     }
 
-
     @PostMapping("/{answer-id}/upvote")
     @ResponseStatus(HttpStatus.CREATED)
     public VoteDto.AnswerResponse postAnswerUpVote(@PathVariable("answer-id") long answerId,
                                                        @PathVariable("answer-id") long answerVoterId) {
         return answerVoteService.saveAnswerVote(answerId, answerVoterId, 1);
     }
-
 
     @PostMapping("/{answer-id}/downvote")
     @ResponseStatus(HttpStatus.CREATED)
