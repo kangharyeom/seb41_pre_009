@@ -25,17 +25,12 @@ import java.util.stream.Collectors;
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
-    private final ApplicationEventPublisher publisher;
-    // 추가
+    //private final ApplicationEventPublisher publisher;
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
 
-    public MemberService(MemberRepository memberRepository,
-                         ApplicationEventPublisher publisher,
-                         PasswordEncoder passwordEncoder,
-                         CustomAuthorityUtils authorityUtils) {
+    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder, CustomAuthorityUtils authorityUtils) {
         this.memberRepository = memberRepository;
-        this.publisher = publisher;
         this.passwordEncoder = passwordEncoder;
         this.authorityUtils = authorityUtils;
     }
@@ -56,8 +51,15 @@ public class MemberService {
 
         Member savedMember = memberRepository.save(member);
 
-        publisher.publishEvent(new MemberRegistrationApplicationEvent(savedMember));
+        //publisher.publishEvent(new MemberRegistrationApplicationEvent(this, savedMember));
         return savedMember;
+        //return memberRepository.save(member);
+    }
+
+    private List<GrantedAuthority> createAuthorities(String... roles) {
+        return Arrays.stream(roles)
+                .map(role -> new SimpleGrantedAuthority(role))
+                .collect(Collectors.toList());
     }
 
 

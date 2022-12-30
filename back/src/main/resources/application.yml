@@ -36,6 +36,6 @@ mail:
   address:
     admin: admin@gmail.com
 jwt:
-  key: 제블로그에오신여러분을환영합니다
-  access-token-expiration-minutes: 40
+  key: ${JWT_SECRET_KEY}
+  access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
